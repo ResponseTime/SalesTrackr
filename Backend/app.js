@@ -42,6 +42,25 @@ function calcRange(price) {
   }
   return bar;
 }
+
+app.get("/alldata", async (req, res) => {
+  let collection = await db.collection("analysis_data");
+  let data = await collection.find().project({ _id: 0 });
+  let response = [];
+  for await (let key of data) {
+    resjson = {};
+    resjson.id = key.id;
+    resjson.title = key.title;
+    resjson.price = key.price;
+    resjson.desc = key.description;
+    resjson.category = key.category;
+    resjson.imgUrl = key.image;
+    resjson.sold = key.sold;
+    resjson.datetime = key.dateOfSale;
+    response.push(resjson);
+  }
+  res.json(response);
+});
 app.get("/statistics/tsale", async (req, res) => {
   const { month } = req.query;
   let collection = await db.collection("analysis_data");
