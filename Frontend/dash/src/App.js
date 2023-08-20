@@ -1,8 +1,12 @@
-import logo from "./logo.svg";
 import "./App.css";
+import Itemlist from "./components/Itemlist";
 
 function App() {
-  return <></>;
+  return (
+    <>
+      <Itemlist />
+    </>
+  );
 }
 
 export default App;
