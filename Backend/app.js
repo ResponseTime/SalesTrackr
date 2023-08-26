@@ -46,6 +46,10 @@ function calcRange(price) {
 app.get("/alldata", async (req, res) => {
   let collection = await db.collection("analysis_data");
   let data = await collection.find().project({ _id: 0 });
+  let pageN = req.query.page;
+  let pageS = req.query.pageSize;
+  let lastInd = pageN * pageS;
+  let firstInd = lastInd - pageS;
   let response = [];
   for await (let key of data) {
     resjson = {};
@@ -59,7 +63,7 @@ app.get("/alldata", async (req, res) => {
     resjson.datetime = key.dateOfSale;
     response.push(resjson);
   }
-  res.json(response);
+  res.json(response.slice(firstInd, lastInd));
 });
 app.get("/statistics/tsale", async (req, res) => {
   const { month } = req.query;
