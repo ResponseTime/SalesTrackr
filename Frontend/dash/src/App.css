@@ -26,3 +26,35 @@
     align-items: center;
     width: 100%;
 }
+.contain{
+    position: absolute;
+    top: 50%;
+    width: 100%;
+}
+table{
+    margin: auto;
+    width: 60%;
+    border-collapse: collapse;
+}
+tr,td{
+    padding: 40px 0px;
+    border: 1px solid black;
+}
+.tool{
+    width: 70%;
+    display: flex;
+    justify-content: space-between;
+    margin:auto;
+}
+.utility{
+    display: flex;
+    width: 70%;
+    justify-content: space-between;
+    margin: 10px auto;
+
+}
+.tool>button{
+    width: 10%;
+    height: 30px;
+    margin: 10px 0px;
+}
